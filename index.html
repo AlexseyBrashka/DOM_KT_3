@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM_KT3</title>
+</head>
+<style>
+
+    ul{
+        display: none;
+    }
+    .last{
+        text-decoration: underline;
+    }
+
+</style>
+<body>
+    <ul id ='1' style="display: block;">
+        <li>Книги<ul>
+            <li>Отчественные<ul>
+                <li>Детективы<ul>
+                    <li>Остросюжетные</li>
+                    <li>Спокойные</li>
+                </ul></li>
+                <li>Научная фантастика</li>
+                <li>Историчесные</li>
+            </ul>
+            <li>Зарубежные<ul>
+                <li>Детективы</li>
+                <li>Научная фантастика</li>
+                <li>Историчесные</li>
+            </ul>
+        </li>
+        </ul></li>
+        <li>DVD<ul>
+            <li>Отчественные<ul>
+                <li>Детективы<ul>
+                    <li>Остросюжетные</li>
+                    <li>Спокойные</li>
+                </ul></li>
+                <li>Научная фантастика</li>
+                <li>Историчесные</li>
+            </ul>
+            <li>Зарубежные<ul>
+                <li>Детективы</li>
+                <li>Научная фантастика</li>
+                <li>Историчесные</li>
+            </ul>
+        </li>
+        </ul></li>
+    </ul>
+    <script>
+
+
+        list = document.querySelectorAll('li')
+    for ( var i = 0; i < list.length; i++ ) {
+        list[i].addEventListener( 'click', (e) => {
+            el = e.target
+            if (el.nodeName=='LI'){
+                if (el.querySelector('ul')){
+                elem = el.querySelector('ul')
+                if (elem.getAttribute('style')==null || elem.getAttribute('style')=='display: none'){
+                    elem.setAttribute('style','display: block')
+                    e.stopPropagation()
+
+                }
+                else{
+                    elem.setAttribute('style','display: none')
+                    e.stopPropagation()
+                }
+            }
+            }
+        })
+    }
+    for ( var i = 0; i < list.length; i++ ) {
+        if (list[i].children.length==0){
+            list[i].classList.toggle('last')
+        }
+    }
+
+    </script>
+</body>
+</html>
